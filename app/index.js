@@ -161,4 +161,4 @@ import Table from './table';
   }
 })(window);
 
-export {Button as ExplousButton, Card as ExplousCard, Checkbox as ExplousCheckbox, Datepicker as ExplousDatepicker, Grid as ExplousGrid, Input as ExplousInput, InputFile as ExplousInputFile, InputRange as ExplousInputRange, Loader as ExplousLoader, Popup as ExplousPopup, RadioButton as ExplousRadioButton, SlideToggle as ExplousSlideToggle, Snackbar as ExplousSnackbar, Table as ExplousTable}
+export {Button as ExplousButton, Card as ExplousCard, Carousel as ExplousCarousel, Checkbox as ExplousCheckbox, Datepicker as ExplousDatepicker, Grid as ExplousGrid, Input as ExplousInput, InputFile as ExplousInputFile, InputRange as ExplousInputRange, Loader as ExplousLoader, Popup as ExplousPopup, RadioButton as ExplousRadioButton, SlideToggle as ExplousSlideToggle, Snackbar as ExplousSnackbar, Table as ExplousTable}
