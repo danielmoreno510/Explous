@@ -94,47 +94,51 @@ var _checkbox = __webpack_require__(4);
 
 var _checkbox2 = _interopRequireDefault(_checkbox);
 
-var _datepicker = __webpack_require__(5);
+var _carousel = __webpack_require__(5);
+
+var _carousel2 = _interopRequireDefault(_carousel);
+
+var _datepicker = __webpack_require__(6);
 
 var _datepicker2 = _interopRequireDefault(_datepicker);
 
-var _grid = __webpack_require__(6);
+var _grid = __webpack_require__(7);
 
 var _grid2 = _interopRequireDefault(_grid);
 
-var _input = __webpack_require__(7);
+var _input = __webpack_require__(8);
 
 var _input2 = _interopRequireDefault(_input);
 
-var _inputFile = __webpack_require__(8);
+var _inputFile = __webpack_require__(9);
 
 var _inputFile2 = _interopRequireDefault(_inputFile);
 
-var _inputRange = __webpack_require__(9);
+var _inputRange = __webpack_require__(10);
 
 var _inputRange2 = _interopRequireDefault(_inputRange);
 
-var _loader = __webpack_require__(10);
+var _loader = __webpack_require__(11);
 
 var _loader2 = _interopRequireDefault(_loader);
 
-var _popup = __webpack_require__(11);
+var _popup = __webpack_require__(12);
 
 var _popup2 = _interopRequireDefault(_popup);
 
-var _radioButton = __webpack_require__(12);
+var _radioButton = __webpack_require__(13);
 
 var _radioButton2 = _interopRequireDefault(_radioButton);
 
-var _slideToggle = __webpack_require__(13);
+var _slideToggle = __webpack_require__(14);
 
 var _slideToggle2 = _interopRequireDefault(_slideToggle);
 
-var _snackbar = __webpack_require__(14);
+var _snackbar = __webpack_require__(15);
 
 var _snackbar2 = _interopRequireDefault(_snackbar);
 
-var _table = __webpack_require__(15);
+var _table = __webpack_require__(16);
 
 var _table2 = _interopRequireDefault(_table);
 
@@ -154,6 +158,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
         _card2.default.init(params);
     };
     window.ExplousCard = {
+        init: _init
+    };
+})(window);
+
+(function (window) {
+    var _init = function _init(params) {
+        _carousel2.default.init(params);
+    };
+    window.ExplousCarousel = {
         init: _init
     };
 })(window);
@@ -576,6 +589,365 @@ exports.default = Checkbox;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Carousel = {};
+
+Carousel.init = function (_ref) {
+    var container = _ref.container,
+        size = _ref.size,
+        data = _ref.data,
+        arrow = _ref.arrow,
+        color = _ref.color,
+        background = _ref.background,
+        time = _ref.time,
+        full = _ref.full;
+
+    var activeCarousel = true;
+    if (container && size && data && color && time && background) {
+        var css;
+        var style;
+        var img1;
+        var image1;
+        var index;
+        var img2;
+        var image2;
+        var cContainer;
+        var x;
+
+        (function () {
+            var carouselMove = function carouselMove(move) {
+                if (activeCarousel) {
+                    activeCarousel = false;
+                    if (move == "left") {
+                        var transition = cContainer.offsetWidth;
+                        for (var x = data.length; x >= 0; x--) {
+                            if (x > 0) {
+                                document.getElementById(container + "_point_" + (x - 1)).style.background = background;
+                            }
+                            if (data[x] == image1) {
+                                img2 = new Image();
+                                img2.src = data[x];
+                                image2 = data[x];
+                                if (x - 1 == -1) {
+                                    img1 = new Image();
+                                    img1.src = data[data.length - 1];
+                                    image1 = data[data.length - 1];
+                                    index = data.length - 1;
+                                    document.getElementById(container + "_point_" + (data.length - 1)).style.background = color;
+                                } else {
+                                    img1 = new Image();
+                                    img1.src = data[x - 1];
+                                    image1 = data[x - 1];
+                                    index = x - 1;
+                                    document.getElementById(container + "_point_" + (x - 1)).style.background = color;
+                                }
+                                x = -1;
+                            }
+                        }
+                        document.getElementById(container + "_div1").innerHTML = "";
+                        document.getElementById(container + "_div2").innerHTML = "";
+                        document.getElementById(container + "_div1").appendChild(img1);
+                        document.getElementById(container + "_div2").appendChild(img2);
+                        img1.setAttribute("class", "carousel_images");
+                        img2.setAttribute("class", "carousel_images");
+                        document.getElementById(container + "_div1").classList.add("carousel_div_inactive");
+                        document.getElementById(container + "_div2").classList.add("carousel_div_inactive");
+                        document.getElementById(container + "_div1").style.transform = "translate3d(-" + transition + "px,0,0)";
+                        document.getElementById(container + "_div2").style.transform = "translate3d(-" + transition + "px,0,0)";
+                        setTimeout(function () {
+                            document.getElementById(container + "_div1").classList.remove("carousel_div_inactive");
+                            document.getElementById(container + "_div2").classList.remove("carousel_div_inactive");
+                            document.getElementById(container + "_div1").style.transform = "translate3d(0,0,0)";
+                            document.getElementById(container + "_div2").style.transform = "translate3d(0,0,0)";
+                            setTimeout(function () {
+                                activeCarousel = true;
+                            }, 400);
+                        }, 50);
+                    } else {
+                        var transition = cContainer.offsetWidth;
+                        document.getElementById(container + "_div1").style.transform = "translate3d(-" + transition + "px,0,0)";
+                        document.getElementById(container + "_div2").style.transform = "translate3d(-" + transition + "px,0,0)";
+                        setTimeout(function () {
+                            for (var x = 0; x < data.length; x++) {
+                                document.getElementById(container + "_point_" + x).style.background = background;
+                                if (data[x] == image2) {
+                                    if (x == 0) {
+                                        document.getElementById(container + "_point_" + (data.length - 1)).style.background = background;
+                                    }
+                                    document.getElementById(container + "_point_" + x).style.background = color;
+                                    img1 = new Image();
+                                    img1.src = data[x];
+                                    image1 = data[x];
+                                    index = x;
+                                    if (x + 1 == data.length) {
+                                        img2 = new Image();
+                                        img2.src = data[0];
+                                        image2 = data[0];
+                                    } else {
+                                        img2 = new Image();
+                                        img2.src = data[x + 1];
+                                        image2 = data[x + 1];
+                                    }
+                                    x = data.length;
+                                }
+                            }
+                            document.getElementById(container + "_div1").innerHTML = "";
+                            document.getElementById(container + "_div2").innerHTML = "";
+                            document.getElementById(container + "_div1").appendChild(img1);
+                            document.getElementById(container + "_div2").appendChild(img2);
+                            img1.setAttribute("class", "carousel_images");
+                            img2.setAttribute("class", "carousel_images");
+                            document.getElementById(container + "_div1").classList.add("carousel_div_inactive");
+                            document.getElementById(container + "_div2").classList.add("carousel_div_inactive");
+                            document.getElementById(container + "_div1").style.transform = "translate3d(0,0,0)";
+                            document.getElementById(container + "_div2").style.transform = "translate3d(0,0,0)";
+                            setTimeout(function () {
+                                document.getElementById(container + "_div1").classList.remove("carousel_div_inactive");
+                                document.getElementById(container + "_div2").classList.remove("carousel_div_inactive");
+                                activeCarousel = true;
+                            }, 50);
+                        }, 400);
+                    }
+                }
+            };
+
+            var carouselPoint = function carouselPoint(image) {
+                image = image.id.replace(container + "_point_", "");
+                if (image > index) {
+                    img2.src = data[image];
+                    image2 = data[image];
+                    document.getElementById(container + "_div2").innerHTML = "";
+                    document.getElementById(container + "_div2").appendChild(img2);
+                    setTimeout(function () {
+                        carouselMove("right");
+                    }, 100);
+                }
+                if (image < index) {
+                    activeCarousel = false;
+                    for (var x in data) {
+                        document.getElementById(container + "_point_" + x).style.background = background;
+                    }
+                    document.getElementById(container + "_point_" + image).style.background = color;
+                    var transition = cContainer.offsetWidth;
+                    image = Number(image);
+                    img1.src = data[image];
+                    image1 = data[image];
+                    img2.src = data[index];
+                    image2 = data[index];
+                    document.getElementById(container + "_div2").innerHTML = "";
+                    document.getElementById(container + "_div2").appendChild(img1);
+                    document.getElementById(container + "_div1").innerHTML = "";
+                    document.getElementById(container + "_div2").innerHTML = "";
+                    document.getElementById(container + "_div1").appendChild(img1);
+                    document.getElementById(container + "_div2").appendChild(img2);
+                    img1.setAttribute("class", "carousel_images");
+                    img2.setAttribute("class", "carousel_images");
+                    document.getElementById(container + "_div1").classList.add("carousel_div_inactive");
+                    document.getElementById(container + "_div2").classList.add("carousel_div_inactive");
+                    document.getElementById(container + "_div1").style.transform = "translate3d(-" + transition + "px,0,0)";
+                    document.getElementById(container + "_div2").style.transform = "translate3d(-" + transition + "px,0,0)";
+                    setTimeout(function () {
+                        document.getElementById(container + "_div1").classList.remove("carousel_div_inactive");
+                        document.getElementById(container + "_div2").classList.remove("carousel_div_inactive");
+                        document.getElementById(container + "_div1").style.transform = "translate3d(0,0,0)";
+                        document.getElementById(container + "_div2").style.transform = "translate3d(0,0,0)";
+                        setTimeout(function () {
+                            img2.src = data[image + 1];
+                            image2 = data[image + 1];
+                            activeCarousel = true;
+                        }, 50);
+                    }, 50);
+                }
+            };
+
+            css = '.carousel_point{transition:background 0.2s;margin: 6px;width: 21px;height: 21px;border-radius: 11px;background: ' + background + ';cursor: pointer;border: 1px solid ' + color + ';}.carousel_point:active{opacity:0.8}.carousel_points{display: flex;position: absolute;z-index: 1;}.carousel_arrow{cursor:pointer;position: absolute;font-size: 29px;z-index: 1;background: ' + background + ';color:' + color + ';padding: 9px;padding-left: 18px;padding-right: 18px;padding-bottom: 11px;border-radius: 26px;}.carousel_arrow:active{opacity:0.8}.carousel_div_inactive{-webkit-transition: transform 0s !important;transition: transform 0s !important;}.carousel_div{-webkit-transition: transform 0.5s;transition: transform 0.5s;}.carousel_images{width:100%}';
+            style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+            document.getElementsByTagName('head')[0].appendChild(style);
+
+            img1 = new Image();
+
+            img1.src = data[0];
+            image1 = data[0];
+            index = 0;
+            img2 = new Image();
+
+            img2.src = data[1];
+            image2 = data[1];
+            cContainer = document.getElementById(container);
+
+            cContainer.style.display = "-webkit-box";
+            cContainer.style.borderRadius = "6px";
+            cContainer.style.overflow = "hidden";
+            var points = document.createElement("div");
+            cContainer.appendChild(points);
+            points.setAttribute("id", container + "_points");
+            points.setAttribute("class", "carousel_points");
+            for (x in data) {
+                var point = document.createElement("div");
+                points.appendChild(point);
+                point.setAttribute("id", container + "_point_" + x);
+                point.setAttribute("class", "carousel_point");
+                point.onclick = function () {
+                    carouselPoint(this);
+                };
+            }
+            document.getElementById(container + "_point_0").style.background = color;
+            var left = document.createElement("div");
+            cContainer.appendChild(left);
+            left.setAttribute("id", container + "_left");
+            left.setAttribute("class", "carousel_arrow");
+            left.innerHTML = "<";
+            left.onclick = function () {
+                carouselMove("left");
+            };
+            if (!arrow) {
+                left.style.display = "none";
+            }
+            var right = document.createElement("div");
+            cContainer.appendChild(right);
+            right.setAttribute("id", container + "_right");
+            right.setAttribute("class", "carousel_arrow");
+            right.innerHTML = ">";
+            right.onclick = function () {
+                carouselMove("right");
+            };
+            if (!arrow) {
+                right.style.display = "none";
+            }
+            var div1 = document.createElement("div");
+            cContainer.appendChild(div1);
+            div1.setAttribute("id", container + "_div1");
+            div1.setAttribute("class", "carousel_div");
+            div1.appendChild(img1);
+            img1.setAttribute("class", "carousel_images");
+            img1.setAttribute("id", container + "_image_1");
+            var div2 = document.createElement("div");
+            cContainer.appendChild(div2);
+            div2.setAttribute("id", container + "_div2");
+            div2.setAttribute("class", "carousel_div");
+            div2.appendChild(img2);
+            img2.setAttribute("class", "carousel_images");
+            img2.setAttribute("id", container + "_image_2");
+            div1.style.width = "100%";
+            div2.style.width = "100%";
+            if (full) {
+                div1.style.display = "flex";
+                div2.style.display = "flex";
+            }
+            setTimeout(function () {
+                calcCarousel(cContainer);
+            }, 100);
+            carouselActive();
+        })();
+    } else {
+        var errorExplous = "Explous Carousel - Error when assigning value to some variable: ";
+        if (!container) {
+            console.log(errorExplous + "container");
+        }
+        if (!size) {
+            console.log(errorExplous + "size");
+        }
+        if (!data) {
+            console.log(errorExplous + "data");
+        }
+        if (!color) {
+            console.log(errorExplous + "color");
+        }
+        if (!time) {
+            console.log(errorExplous + "time");
+        }
+        if (!background) {
+            console.log(errorExplous + "background");
+        }
+    }
+    window.addEventListener("resize", onResizeCarousel);
+    function onResizeCarousel() {
+        calcCarousel(cContainer);
+    }
+    function calcCarousel(cContainer) {
+        cContainer.style.width = size;
+        cContainer.style.height = cContainer.offsetWidth / 2 + "px";
+        document.getElementById(container + "_left").style.marginTop = cContainer.offsetWidth / 2 / 2 - 40 + "px";
+        document.getElementById(container + "_left").style.marginLeft = "6px";
+        document.getElementById(container + "_right").style.marginTop = cContainer.offsetWidth / 2 / 2 - 40 + "px";
+        document.getElementById(container + "_right").style.marginLeft = cContainer.offsetWidth - 59 + "px";
+        document.getElementById(container + "_points").style.marginTop = cContainer.offsetWidth / 2 - 40 + "px";
+        document.getElementById(container + "_points").style.marginLeft = cContainer.offsetHeight - document.getElementById(container + "_points").offsetWidth / 2 + "px";
+    }
+    function carouselActive() {
+        setTimeout(function () {
+            if (activeCarousel) {
+                var transition = cContainer.offsetWidth;
+                document.getElementById(container + "_div1").style.transform = "translate3d(-" + transition + "px,0,0)";
+                document.getElementById(container + "_div2").style.transform = "translate3d(-" + transition + "px,0,0)";
+                setTimeout(function () {
+                    if (activeCarousel) {
+                        for (var x = 0; x < data.length; x++) {
+                            document.getElementById(container + "_point_" + x).style.background = background;
+                            if (data[x] == image2) {
+                                if (x == 0) {
+                                    document.getElementById(container + "_point_" + (data.length - 1)).style.background = background;
+                                }
+                                document.getElementById(container + "_point_" + x).style.background = color;
+                                img1 = new Image();
+                                img1.src = data[x];
+                                image1 = data[x];
+                                index = x;
+                                if (x + 1 == data.length) {
+                                    img2 = new Image();
+                                    img2.src = data[0];
+                                    image2 = data[0];
+                                } else {
+                                    img2 = new Image();
+                                    img2.src = data[x + 1];
+                                    image2 = data[x + 1];
+                                }
+                                x = data.length;
+                            }
+                        }
+                        document.getElementById(container + "_div1").innerHTML = "";
+                        document.getElementById(container + "_div2").innerHTML = "";
+                        document.getElementById(container + "_div1").appendChild(img1);
+                        document.getElementById(container + "_div2").appendChild(img2);
+                        img1.setAttribute("class", "carousel_images");
+                        img2.setAttribute("class", "carousel_images");
+                        document.getElementById(container + "_div1").classList.add("carousel_div_inactive");
+                        document.getElementById(container + "_div2").classList.add("carousel_div_inactive");
+                        document.getElementById(container + "_div1").style.transform = "translate3d(0,0,0)";
+                        document.getElementById(container + "_div2").style.transform = "translate3d(0,0,0)";
+                        setTimeout(function () {
+                            document.getElementById(container + "_div1").classList.remove("carousel_div_inactive");
+                            document.getElementById(container + "_div2").classList.remove("carousel_div_inactive");
+                            carouselActive();
+                        }, 50);
+                    } else {
+                        carouselActive();
+                    }
+                }, 400);
+            } else {
+                carouselActive();
+            }
+        }, time);
+    }
+};
+
+exports.default = Carousel;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1531,7 +1903,7 @@ Datepicker.init = function (_ref) {
 exports.default = Datepicker;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1616,7 +1988,7 @@ Grid.init = function (_ref) {
 exports.default = Grid;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1954,7 +2326,7 @@ Input.init = function (_ref) {
 exports.default = Input;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2125,7 +2497,7 @@ InputFile.init = function (_ref) {
 exports.default = InputFile;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2224,7 +2596,7 @@ InputRange.init = function (_ref) {
 exports.default = InputRange;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2368,7 +2740,7 @@ Loader.init = function (_ref) {
 exports.default = Loader;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2425,7 +2797,7 @@ Popup.init = function (_ref) {
 exports.default = Popup;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2492,7 +2864,7 @@ RadioButton.init = function (_ref) {
 exports.default = RadioButton;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2548,7 +2920,7 @@ SlideToggle.init = function (_ref) {
 exports.default = SlideToggle;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2633,7 +3005,7 @@ Snackbar.show = function (id, time) {
 exports.default = Snackbar;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

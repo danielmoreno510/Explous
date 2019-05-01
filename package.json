@@ -1,6 +1,6 @@
 {
   "name": "@explous/explous",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Library of responsive components for the development of front-end interfaces.",
   "main": "app/index.js",
   "scripts": {
@@ -35,5 +35,5 @@
   "bugs": {
     "url": "https://github.com/danielmoreno510/Explous/issues"
   },
-  "homepage": "https://github.com/danielmoreno510/Explous#readme"
+  "homepage": "https://explous.com/"
 }

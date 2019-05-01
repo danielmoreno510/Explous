@@ -27,6 +27,8 @@
                     </div>
                 </div>
             </div>
+            <h1>Carousel</h1>
+            <div id="explous_carousel"></div>
 
             <h1>Checkbox</h1>
             <div id="explous_checkbox_container">
@@ -173,6 +175,18 @@
                 dropContent:"explous_card_drop_content",
                 colorIcon:"black",
                 border:"1px solid #cccccc"
+            })
+        </script>
+        <script type="text/javascript">
+            ExplousCarousel.init({
+                container:"explous_carousel",
+                size:"100%",
+                data:["../images/carousel/1.jpg","../images/carousel/2.jpg","../images/carousel/3.jpg","../images/carousel/4.jpg","../images/carousel/5.jpg","../images/carousel/6.jpg","../images/carousel/7.jpg"],
+                arrow:true,
+                color:"#676767",
+                background:"#ffffff94",
+                time:"5000",
+                full:false
             })
         </script>
         <script type="text/javascript">
@@ -511,11 +525,4 @@
             });
         </script>
     </body>
-
-    <script>
-        window.onload = () => {
-        let el = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
-        el.parentNode.removeChild(el);
-        }
-    </script>
 </html>

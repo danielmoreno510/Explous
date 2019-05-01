@@ -1,6 +1,7 @@
 import Button from './button';
 import Card from './card';
 import Checkbox from './checkbox';
+import Carousel from './carousel';
 import Datepicker from './datepicker';
 import Grid from './grid';
 import Input from './input';
@@ -27,6 +28,15 @@ import Table from './table';
         Card.init(params);
     }
     window.ExplousCard= {
+        init:_init
+    }
+})(window);
+
+(function(window){
+    let _init = (params)=> {
+        Carousel.init(params);
+    }
+    window.ExplousCarousel= {
         init:_init
     }
 })(window);
