@@ -80,7 +80,7 @@ module.exports = __webpack_require__(1);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ExplousTable = exports.ExplousSnackbar = exports.ExplousSlideToggle = exports.ExplousRadioButton = exports.ExplousPopup = exports.ExplousLoader = exports.ExplousInputRange = exports.ExplousInputFile = exports.ExplousInput = exports.ExplousGrid = exports.ExplousDatepicker = exports.ExplousCheckbox = exports.ExplousCard = exports.ExplousButton = undefined;
+exports.ExplousTable = exports.ExplousSnackbar = exports.ExplousSlideToggle = exports.ExplousRadioButton = exports.ExplousPopup = exports.ExplousLoader = exports.ExplousInputRange = exports.ExplousInputFile = exports.ExplousInput = exports.ExplousGrid = exports.ExplousDatepicker = exports.ExplousCheckbox = exports.ExplousCarousel = exports.ExplousCard = exports.ExplousButton = undefined;
 
 var _button = __webpack_require__(2);
 
@@ -293,6 +293,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.ExplousButton = _button2.default;
 exports.ExplousCard = _card2.default;
+exports.ExplousCarousel = _carousel2.default;
 exports.ExplousCheckbox = _checkbox2.default;
 exports.ExplousDatepicker = _datepicker2.default;
 exports.ExplousGrid = _grid2.default;
@@ -320,14 +321,10 @@ var Button = {};
 
 Button.init = function (_ref) {
     var container = _ref.container,
-        color = _ref.color,
-        background = _ref.background,
-        border = _ref.border,
-        changeColor = _ref.changeColor,
-        text = _ref.text;
+        changeColor = _ref.changeColor;
 
-    if (container && color && background && border && changeColor && text) {
-        var css = '#' + container + ':active{ background-color: ' + changeColor + ' !important;border:2px solid ' + changeColor + ' !important}';
+    if (container && changeColor) {
+        var css = '#' + container + '{border: 1px solid;}#' + container + ':active{ background-color: ' + changeColor + ' !important;}';
         var style = document.createElement('style');
         if (style.styleSheet) {
             style.styleSheet.cssText = css;
@@ -337,37 +334,20 @@ Button.init = function (_ref) {
         document.getElementsByTagName('head')[0].appendChild(style);
 
         var button = document.getElementById(container);
-        button.style.background = background;
         button.style.textDecoration = "none";
         button.style.borderRadius = "4px";
-        button.style.color = color;
-        button.style.padding = "8px";
+        button.style.padding = "10px";
         button.style.fontSize = "16px";
         button.style.cursor = "pointer";
         button.style.width = "max-content";
-        button.style.border = "2px solid " + border;
         button.style.outline = "none";
-        var textB = document.createTextNode(text);
-        button.appendChild(textB);
     } else {
         var errorExplous = "Explous Button - Error when assigning value to some variable: ";
         if (!container) {
             console.log(errorExplous + "container");
         }
-        if (!color) {
-            console.log(errorExplous + "color");
-        }
-        if (!background) {
-            console.log(errorExplous + "background");
-        }
-        if (!border) {
-            console.log(errorExplous + "border");
-        }
         if (!changeColor) {
             console.log(errorExplous + "changeColor");
-        }
-        if (!text) {
-            console.log(errorExplous + "text");
         }
     }
 };

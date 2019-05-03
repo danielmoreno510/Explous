@@ -12,8 +12,8 @@
 
         <div style="width: 90%;margin-left: 5%;">
             <h1>Button</h1>
-            <div id="explous_button" style="float: left;margin-right: 5px;"></div>
-            <button id="explous_button1"></button>
+            <div id="explous_button" style="color:#ffffff;background: #1565c0;float: left;margin-right: 5px;">Success</div>
+            <button id="explous_button1" style="color:#ffffff;background: #f44336;">Cancel</button>
 
             <h1>Card</h1>
             <div id="explous_card">
@@ -111,10 +111,10 @@
             <h1>Popup</h1>
             <div id="explous_popup_container">
                 <div id="explous_popup" style="margin-top: calc(50vh - 100px);background: white;width: 200px;height: 100px;margin-left: calc(50% - 100px);">
-                    <div onclick='ExplousPopup.close("explous_popup_container")' id="close-popup" style="margin-right: 5px;"></div>
+                    <div onclick='ExplousPopup.close("explous_popup_container")' id="close-popup" style="color:#ffffff;background: #1565c0;margin-right: 5px;">Close</div>
                 </div>
             </div>
-            <div onclick='ExplousPopup.open("explous_popup_container")' id="open_popup" style="margin-right: 5px;"></div>
+            <div onclick='ExplousPopup.open("explous_popup_container")' id="open_popup" style="color:#ffffff;background: #1565c0;margin-right: 5px;">Open</div>
 
             <h1>Radio button</h1>
             <div id="explous_container_radio_button">
@@ -132,7 +132,7 @@
             <h1>Snackbar</h1>
             <div id="explous_snackbar">
             </div>
-            <div onclick='ExplousSnackbar.show("explous_snackbar", "3000")' id="active-snackbar" style="margin-right: 5px;"></div>
+            <div onclick='ExplousSnackbar.show("explous_snackbar", "3000")' id="active-snackbar" style="color:#ffffff;background: #1565c0;margin-right: 5px;">Show</div>
             
             <h1>Table</h1>
             <h3>Pagination</h3>
@@ -152,19 +152,11 @@
 
             ExplousButton.init({
                 container:"explous_button",
-                color:"#ffffff",
-                background:colorPrincipal,
-                border:colorPrincipal,
-                changeColor:colorPrincipal2,
-                text:"Aceptar",
+                changeColor:"#0d47a1"
             })
             ExplousButton.init({
                 container:"explous_button1",
-                color:"#ffffff",
-                background:"#f44336",
-                border:"#f44336",
-                changeColor:"#d23b30",
-                text:"Cancel"
+                changeColor:"#d23b30"
             })
         </script>
         <script type="text/javascript">
@@ -299,19 +291,11 @@
             });
             ExplousButton.init({
                 container:"open_popup",
-                color:"#ffffff",
-                background:colorPrincipal,
-                border:colorPrincipal,
-                changeColor:colorPrincipal2,
-                text:"Open"
+                changeColor:"#0d47a1"
             })
             ExplousButton.init({
                 container:"close-popup",
-                color:"#ffffff",
-                background:colorPrincipal,
-                border:colorPrincipal,
-                changeColor:colorPrincipal2,
-                text:"Close"
+                changeColor:"#0d47a1"
             })
         </script>
         <script type="text/javascript">
@@ -347,11 +331,6 @@
             });
             ExplousButton.init({
                 container:"active-snackbar",
-                color:"#ffffff",
-                background:colorPrincipal,
-                border:colorPrincipal,
-                changeColor:colorPrincipal2,
-                text:"Show"
             })
         </script>
         <script type="text/javascript">
