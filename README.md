@@ -13,7 +13,7 @@ Starting with Explous is very simple, just add the library from your Javascript.
 Just add the following &lt;script&gt; elements into your HTML pages
 
 ```
-<script src="https://code.explous.com/1.0.9/explous.min.js"></script>
+<script src="https://code.explous.com/1.1.0/explous.min.js"></script>
 ```
 
 ### Download
@@ -21,7 +21,7 @@ Just add the following &lt;script&gt; elements into your HTML pages
 Download the Javascript (127kb)
 Just add the following &lt;script&gt; elements into your HTML pages
 
-[Download](https://code.explous.com/1.0.9/explous.zip)
+[Download](https://code.explous.com/1.1.0/explous.zip)
 
 ```
 <script src="./explous.min.js"></script>
@@ -100,7 +100,7 @@ Please read [CONTRIBUTING.md](https://github.com/danielmoreno510/Explous/blob/ma
 
 ## Version
 
-1.0.9. Licensed Mit.
+1.1.0. Licensed Mit.
 
 ## Authors
 
