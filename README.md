@@ -2,7 +2,7 @@
 
 Explous is a library of responsive components for front-end interfaces development.
 
-It's an open source library developed with HTLM and Javascript. It allows fast and complex prototypes building, components management is done by Javascript, facilitating the process of calculating spaces in grids, tables, cards...
+It's an open source library developed with HTML5 and Javascript. It allows fast and complex prototypes building, components management is done by Javascript, facilitating the process of calculating spaces in grids, tables, cards...
 
 ## Getting Started
 
